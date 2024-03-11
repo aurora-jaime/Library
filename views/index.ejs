@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <%- include('partials/head.ejs') %>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+              <h1>CUCEA Libros</h1>
+              <span class="subheading">Universidad de Guadalajara</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <% libros.forEach(libro => { %>
+          <!-- Post preview-->
+          <div class="post-preview">
+            <a href="/posts/id/<%= libro._id %>">
+              <h2 class="post-title"><%= libro.title %></h2>
+            </a>
+            <p class="post-meta">
+              Publicado por
+              <a> <%= libro.userId.name %></a>
+              on <%= libro.datePosted.toUTCString() %>
+            </p>
+          </div>
+          <!-- Divider-->
+          <hr class="my-4" />
+          <% }) %>
+          <!-- Pager-->
+          <div class="d-flex justify-content-end mb-4">
+            <a class="btn btn-primary text-uppercase" href="#!"
+              >Older Posts →</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer.ejs') %> <%- include('partials/scripts.ejs') %>
+  </body>
+</html>
